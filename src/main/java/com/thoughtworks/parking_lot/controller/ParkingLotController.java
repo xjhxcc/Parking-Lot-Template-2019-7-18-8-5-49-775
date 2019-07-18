@@ -18,5 +18,9 @@ public class ParkingLotController {
     public ParkingLot addPakingLot(@RequestBody ParkingLot parkingLot){
         return parkingLotRepository.save(parkingLot);
     }
+    @DeleteMapping
+    public void deletePakingLot(@RequestBody ParkingLot parkingLot){
+        parkingLotRepository.delete(parkingLot);
+    }
 
 }

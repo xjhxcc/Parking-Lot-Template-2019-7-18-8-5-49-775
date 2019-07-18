@@ -26,4 +26,15 @@ public class ParkingLotRepositoryTest {
         //then
         Assertions.assertEquals("1号停车场",actual.getName(),"not equal");
     }
+    @Test
+    public void should_return_msg_when_call_delete_parkingLot(){
+        //given
+        ParkingLot p1=new ParkingLot("1号停车场",10,"唐家市场");
+        parkingLotRepository.save(p1);
+        parkingLotRepository.save(new ParkingLot("2号停车场",10,"南方软件园"));
+        //when
+        parkingLotRepository.delete(p1);
+        //then
+        Assertions.assertEquals(1,parkingLotRepository.findAll().size());
+    }
 }
