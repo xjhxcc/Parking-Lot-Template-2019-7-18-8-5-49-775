@@ -48,4 +48,15 @@ public class ParkingLotRepositoryTest {
         //then
         Assertions.assertEquals(2,actual.size());
     }
+    @Test
+    public void should_return_parkingLot_when_call_find_parkingLot_by_id(){
+        //given
+        ParkingLot p1=new ParkingLot("1号停车场",10,"唐家市场");
+        parkingLotRepository.save(p1);
+        parkingLotRepository.save(new ParkingLot("2号停车场",8,"南方软件园"));
+        //when
+        ParkingLot actual = parkingLotRepository.findById(p1.getId()).get();
+        //then
+        Assertions.assertEquals("唐家市场",actual.getLocation());
+    }
 }

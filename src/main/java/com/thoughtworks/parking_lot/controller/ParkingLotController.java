@@ -26,5 +26,9 @@ public class ParkingLotController {
     public List<ParkingLot> getPakingLots(){
         return parkingLotRepository.findAll();
     }
+    @GetMapping
+    public ParkingLot getPakingLot(@RequestParam Long id){
+        return parkingLotRepository.findById(id).get();
+    }
 
 }
