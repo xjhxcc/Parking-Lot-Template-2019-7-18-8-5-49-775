@@ -22,5 +22,9 @@ public class ParkingLotController {
     public void deletePakingLot(@RequestBody ParkingLot parkingLot){
         parkingLotRepository.delete(parkingLot);
     }
+    @GetMapping
+    public List<ParkingLot> getPakingLots(){
+        return parkingLotRepository.findAll();
+    }
 
 }

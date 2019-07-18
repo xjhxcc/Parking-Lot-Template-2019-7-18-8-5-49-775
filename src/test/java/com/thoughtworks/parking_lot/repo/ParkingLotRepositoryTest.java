@@ -37,4 +37,15 @@ public class ParkingLotRepositoryTest {
         //then
         Assertions.assertEquals(1,parkingLotRepository.findAll().size());
     }
+    @Test
+    public void should_return_parkingLots_when_call_find_all_parkingLot(){
+        //given
+        ParkingLot p1=new ParkingLot("1号停车场",10,"唐家市场");
+        parkingLotRepository.save(p1);
+        parkingLotRepository.save(new ParkingLot("2号停车场",8,"南方软件园"));
+        //when
+        List<ParkingLot> actual = parkingLotRepository.findAll();
+        //then
+        Assertions.assertEquals(2,actual.size());
+    }
 }
