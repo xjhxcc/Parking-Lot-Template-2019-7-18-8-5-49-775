@@ -1,5 +1,8 @@
 package com.thoughtworks.parking_lot.controller;
 
+import com.thoughtworks.parking_lot.model.ParkingLot;
+import com.thoughtworks.parking_lot.repo.ParkingLotRepository;
+import com.thoughtworks.parking_lot.service.ParkingLotService;
 import com.thoughtworks.parking_lot.service.ParkingOrderService;
 import com.thoughtworks.parking_lot.model.ParkingOrder;
 import org.junit.Test;
@@ -13,6 +16,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
+
+import javax.transaction.Transactional;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -29,6 +34,9 @@ public class ParkingOrderControllerTest {
 
     @Autowired
     private ParkingOrderService parkingOrderService;
+    @Autowired
+    private ParkingLotService parkingLotService;
+    private ParkingLotRepository parkingLotRepository;
     @Test
     public void should_return_parking_order_when_add() throws Exception {
         ResultActions mvcResult = mockMvc.perform(post("/parkingOrders").contentType(MediaType.APPLICATION_JSON_UTF8)
@@ -51,6 +59,18 @@ public class ParkingOrderControllerTest {
         ParkingOrder newParkingOrder = parkingOrderService.findParkingOrderById((long)1);
         //then
         Assertions.assertEquals("2019-07-21", newParkingOrder.getEnd_time());
+    }
+    @Test
+    public void should_update_parking_lot_size() throws Exception {
+        //given
+        MvcResult mvcResult = this.mockMvc.perform(put("/parkingLots?id=3&size=20"))
+                .andExpect(status().isOk()).andReturn();
+        //when
+        int status = mvcResult.getResponse().getStatus();
+        ParkingLot parkingLot = parkingLotRepository.findById((long)3).get();
+        //then
+        Assertions.assertEquals(200,status);
+        Assertions.assertEquals(20,parkingLot.getSize());
     }
 
 }

@@ -59,4 +59,5 @@ public class ParkingLotRepositoryTest {
         //then
         Assertions.assertEquals("唐家市场",actual.getLocation());
     }
+
 }
