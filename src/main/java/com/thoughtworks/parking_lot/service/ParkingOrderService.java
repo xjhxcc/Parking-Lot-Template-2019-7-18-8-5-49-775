@@ -1,4 +1,4 @@
-package com.thoughtworks.parking_lot;
+package com.thoughtworks.parking_lot.service;
 
 import com.thoughtworks.parking_lot.model.ParkingOrder;
 import com.thoughtworks.parking_lot.repo.ParkingOrderRepository;

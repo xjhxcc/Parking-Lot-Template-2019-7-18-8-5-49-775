@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 
 @Entity
+@Table(name="parking_lot")
 public class ParkingLot {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,6 +14,7 @@ public class ParkingLot {
     @Column(nullable = false,unique = true)
     private String name;
     @Min(0)
+    @Column(name="parking_size")
     private int size;
     private String location;
 

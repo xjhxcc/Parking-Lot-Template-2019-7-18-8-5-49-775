@@ -18,7 +18,6 @@ public class ParkingOrder {
     @Column(nullable = false)
     private String create_time;
 
-    @Column(nullable = false)
     private String end_time;
 
     @Column(nullable = false)

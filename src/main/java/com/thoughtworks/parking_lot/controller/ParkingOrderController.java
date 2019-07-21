@@ -1,6 +1,6 @@
 package com.thoughtworks.parking_lot.controller;
 
-import com.thoughtworks.parking_lot.ParkingOrderService;
+import com.thoughtworks.parking_lot.service.ParkingOrderService;
 import com.thoughtworks.parking_lot.model.ParkingOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
